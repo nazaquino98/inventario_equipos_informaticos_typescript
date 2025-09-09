@@ -31,8 +31,8 @@ export class Equipo {
     return this.estado;
   }
 
-  public agregarObservador(obs: Observador): void {
-    this.observadores.push(obs);
+  public agregarObservador(observador: Observador): void {
+    this.observadores.push(observador);
   }
 
   public cambiarEstado(nuevoEstado: string): void {
@@ -40,9 +40,7 @@ export class Equipo {
     this.notificarObservadores();
   }
 
-  private notificarObservadores(): void {
-    for (const obs of this.observadores) {
-      obs.notificar(this, this.estado);
-    }
-  }
+private notificarObservadores(): void {
+  this.observadores.forEach(observadores => observadores.notificar(this, this.estado));
+}
 }
